@@ -62,25 +62,21 @@ export default class Quiz extends Component {
 
   render() {
     const currentQuestion = this.state.currentQuestion;
+    const questions = this.state.questions;
     return (
       // the whole screen
       <div>
-        <div>
-          {this.state.questions.map((question, index) => (
-            <div key={index}>
-              <p> {currentQuestion.questionText}</p>
-            </div>
-          ))}
-        </div>
-
         {/*all the questions boxes */}
         {this.state.questions.length > currentQuestion ? (
           <div className="flex justify-center items-center h-screen ">
             {/* question 1 */}
             <div className="sm:w-[500px] w-80 bg-blue-950 text-white rounded-2xl shadow-2xl sm:py-4 sm:flex  ">
-              <p className="pt-6 px-4 w-[250px]">
+              <div className="pt-6 px-4 w-[250px]">
+                <p>
+                  Question {currentQuestion + 1}/{questions.length}
+                </p>
                 {this.state.questions[currentQuestion].questionText}
-              </p>
+              </div>
 
               <div className="child:border-sky-900 child:border-4 child:w-52 space-y-4 child:rounded-xl child:py-1  child-hover:bg-sky-800 transition-colors py-6 px-14 sm:px-0 ">
                 {this.state.questions[currentQuestion].answerOptions.map(
